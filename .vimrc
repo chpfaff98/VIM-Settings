@@ -1,7 +1,5 @@
 " This is the VIM Configuration file (my personal .vimrc file <3)
 
-" test"
-
 "Set statements
 set nocompatible 			"Set compatibility to VIM only
 set wrap 					"wraps text
@@ -63,26 +61,31 @@ inoremap [ []<Left>
 inoremap " ""<Left>
 inoremap ' ''<Left>
 
+" Set tab settings for Python files
+autocmd FileType python setlocal expandtab
+autocmd FileType python setlocal tabstop=4
+autocmd FileType python setlocal shiftwidth=4
+autocmd FileType python setlocal softtabstop=4
+
 "Enable popup menu for completion
-set completeopt=menuone,noinsert,noselect
-set pumheight=10
-set omnifunc=syntaxcomplete#Complete
-set complete+=k
-set dictionary+=/usr/share/dict/words
+"set completeopt=menuone,noinsert,noselect
+""set pumheight=10
+""set omnifunc=syntaxcomplete#Complete
+""set complete+=k
+""set dictionary+=/usr/share/dict/words
 
-function! AutoComplete()
-  if col('.') > 1 && getline('.')[col('.') - 2] =~ '\k'
-    return "\<C-x>\<C-o>"
-  else
-    return ''
-  endif
-endfunction
+""function! AutoComplete()
+""  if col('.') > 1 && getline('.')[col('.') - 2] =~ '\k'
+""    return "\<C-x>\<C-o>"
+""  else
+""    return ''
+""  endif
+""endfunction
 
-inoremap <expr> <S-k> pumvisible() ? "\<C-p>" : "\<S-k>"
-inoremap <expr> <S-j> pumvisible() ? "\<C-n>" : "\<S-j>"
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
-inoremap <C-Space> <C-x><C-o>
-autocmd CursorMovedI * if pumvisible() == 0 | call feedkeys(AutoComplete(), 'n') | endif
-
+""inoremap <expr> <S-k> pumvisible() ? "\<C-p>" : "\<S-k>"
+""inoremap <expr> <S-j> pumvisible() ? "\<C-n>" : "\<S-j>"
+""inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+""inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
+""inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+""inoremap <C-Space> <C-x><C-o>
+""autocmd CursorMovedI * if pumvisible() == 0 | call feedkeys(AutoComplete(), 'n') | endif
