@@ -1,5 +1,7 @@
 " This is the VIM Configuration file (my personal .vimrc file <3)
 
+"test commit in raspi"
+
 "Set statements
 set nocompatible 			"Set compatibility to VIM only
 set wrap 					"wraps text
