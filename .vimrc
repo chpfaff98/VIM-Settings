@@ -1,72 +1,71 @@
-" This is the VIM Configuration file (my personal .vimrc file <3)
-
-"Set statements
-set nocompatible 			"Set compatibility to VIM only
-set wrap 					"wraps text
-set encoding=utf-8			"Encoding in UTF-8 
-set number 					"Line numbers
-set relativenumber			"Line numbers cursor-position related
-set cursorline				"line in which the cursor is
-set cursorcolumn			"column in which the cursor is
-set shiftwidth=4			"shift width to 4 spaces
-set tabstop=4				"tab width to 4 columns
-set hlsearch				"highlighting when doing search
-set wildmenu				"enable auto completion menu after pressing tab
-set wildmode=list:longest	"make wildmenu like bash completion	
-set statusline=				"activate status bar and its configs
+" Basics
+syntax on                " Syntax Highlighting
+set nocompatible
+set wrap
+set encoding=utf-8
+set number               " row numbers
+set relativenumber       " relative row numbers
+set tabstop=2            " Tab = 2 Spaces
+set shiftwidth=2         " Autoindent = 2 Spaces set expandtab
+set smartindent          " detects code blocks and indents tem
+set wrap                 " sets line wrap
+set wildmenu             " activate wildmenu
+set cursorline           " aktuelle Zeile hervorheben
+set showmatch            " Klammern hervorheben
+set incsearch            " Live-Suche beim Tippen
+set ignorecase           " Suche ohne Groß-/Kleinschreibung
+set smartcase            " activate smartcase
+set hlsearch             " highlight search results
+set clipboard=unnamedplus 
+set encoding=utf-8
+set fileformat=unix
+set ruler
+set statusline=				   "activate status bar and its configs
 set statusline+=\ %F\ %M\ %Y\ %R\ %S\ %{&fileencoding}
 set statusline+=%=
 set statusline+=\%{mode()}\ row:\%l/%L\ col:\%c\ %p%%
 set laststatus=2
-set list
-set listchars=space:·,tab:>-,trail:~,extends:>,precedes:< "to see spaces between
-set mouse=a					"Enable mouse support
-
-" Shortcuts for saving docs
-nnoremap <C-s> :w<CR>
-inoremap <C-s> <Esc>:w<CR>a
-nnoremap <C-q> :q<CR>
-inoremap <C-q> <Esc>:q<CR>
-
-"colors
-syntax on "highlight syntax
-colorscheme habamax 			"Set the coloring for syntax highlight
-highlight LineNr ctermfg=gray
-highlight CursorLineNr ctermfg=brown
-
-"filetypes
-filetype on "Detect the file type
-filetype indent on "Load an indent file for the detected file type.
-
-" Define search
-set hlsearch        "Highlight search
-set incsearch       "incremental search
-set ignorecase      "ignore cases
-set smartcase
-set wrapscan        "continue on the beginnnig
-
-" Tastenkombinationen für die Navigation durch Suchergebnisse
-nnoremap <silent> n nzzzv
-nnoremap <silent> N Nzzzv
 
 " Enable the use of the 't_SI' and 't_EI' escape sequences
 let &t_SI = "\e[5 q"  " Use a vertical bar cursor in insert mode
 let &t_SR = "\e[4 q"  " Use a underline cursor in replace mode
 let &t_EI = "\e[1 q"  " Use a block cursor in normal mode
 
-" Auto-close brackets, braces, and parantheses
+" Filetype handling
+filetype on
+filetype plugin indent on
+
+" Language settings
+au BufRead,BufNewFile *.html,*.css,*.js,*.json setlocal ts=2 sw=2 expandtab
+
+" Keymaps
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>a
+nnoremap <C-q> :q<CR>
+nnoremap <SPACE> :nohlsearch<CR> " deleting search highlight with space
+
+" Split-Navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Split Window Navigation in Normalmode
+nnoremap <C-W><C-K> <C-W>K
+nnoremap <C-W><C-J> <C-W>J
+nnoremap <C-W><C-H> <C-W>H
+nnoremap <C-W><C-L> <C-W>L
+nnoremap <C-W>= <C-W>=
+
+" Autocompletion
 inoremap ( ()<Left>
-inoremap { {}<Left>
 inoremap [ []<Left>
+inoremap { {}<Left>
 inoremap " ""<Left>
 inoremap ' ''<Left>
 
-" Set tab settings for Python files
-autocmd FileType python setlocal expandtab
-autocmd FileType python setlocal tabstop=4
-autocmd FileType python setlocal shiftwidth=4
-autocmd FileType python setlocal softtabstop=4
-
-"Executing·a·Python·script·in·VIM·directly
-autocmd·FileType·python·map·<buffer>·<F9>·:w<CR>:exec·'!python3'·shellescape(@%,·1)<CR>
-autocmd·FileType·python·imap·<buffer>·<F9>·<esc>:w<CR>:exec·'!python3'·shellescape(@%,·1)<CR>
+" Colorscheme
+syntax on
+colorscheme peachpuff
+highlight LineNr ctermfg=gray
+highlight CursorLineNr ctermfg=brown
