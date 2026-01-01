@@ -3,6 +3,8 @@ syntax on                " Syntax Highlighting
 set nocompatible
 set wrap
 set encoding=utf-8
+set list
+set listchars=space:·,tab:→\ ,trail:·,eol:↲
 set number               " row numbers
 set relativenumber       " relative row numbers
 set tabstop=2            " Tab = 2 Spaces
