@@ -78,9 +78,8 @@ tnoremap <C-j> <C-\><C-n><C-w>j
 tnoremap <C-k> <C-\><C-n><C-w>k
 tnoremap <C-l> <C-\><C-n><C-w>l
 
-" Automatischer Wechsel in den Insert-Mode beim Einsteigen
-augroup TerminalStuff
+" Terminal handling
+augroup TerminalSettings
   autocmd!
-  autocmd TermOpen * setlocal nonumber norelativenumber
-  autocmd BufEnter * if &buftype == 'terminal' | startinsert | endif
+  autocmd BufEnter * if &buftype == 'terminal' | setlocal nonumber norelativenumber | startinsert | endif
 augroup END
