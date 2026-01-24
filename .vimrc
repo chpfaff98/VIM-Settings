@@ -68,6 +68,19 @@ inoremap ' ''<Left>
 
 " Colorscheme
 syntax on
-colorscheme peachpuff
+colorscheme habamax
 highlight LineNr ctermfg=gray
 highlight CursorLineNr ctermfg=brown
+
+" Navigation aus dem Terminal erzwingen
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
+
+" Automatischer Wechsel in den Insert-Mode beim Einsteigen
+augroup TerminalStuff
+  autocmd!
+  autocmd TermOpen * setlocal nonumber norelativenumber
+  autocmd BufEnter * if &buftype == 'terminal' | startinsert | endif
+augroup END
