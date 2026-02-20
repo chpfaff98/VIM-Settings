@@ -27,6 +27,7 @@ set statusline+=\ %F\ %M\ %Y\ %R\ %S\ %{&fileencoding}
 set statusline+=%=
 set statusline+=\%{mode()}\ row:\%l/%L\ col:\%c\ %p%%
 set laststatus=2
+set path+=**
 
 " Enable the use of the 't_SI' and 't_EI' escape sequences
 let &t_SI = "\e[5 q"  " Use a vertical bar cursor in insert mode
